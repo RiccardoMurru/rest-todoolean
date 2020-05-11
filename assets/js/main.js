@@ -25,6 +25,19 @@ $(document).ready(function () {
     // lettura e stampa todo da api
     getTodo(apiUrl, template, todoList);
 
+    // post nuovo todo a click bottone
+    addBtn.click(function () {
+        postTodo(inputBar, apiUrl, template, todoList);
+    });
+
+    // post nuovo todo con invio
+    inputBar.keyup(function (ev) {
+        if (ev.which == 13) {
+            postTodo(inputBar, apiUrl, template, todoList);
+        }
+    });
+
+
 }); // end doc ready
 
 /**
@@ -52,4 +65,22 @@ function getTodo(apiUrl, template, container) {
     }).fail(function (err) {
         console.log('errore in lettura todo', err.status, err.statusText);
     })
+}
+
+// post nuovo todo 
+function postTodo(input, apiUrl, template, container) {
+    var todoText = input.val().trim();
+
+    $.ajax({
+        url: apiUrl,
+        method: 'POST',
+        data: {
+            text: todoText
+        }
+    }).done(function (response) {
+        getTodo(apiUrl, template, container);
+    }).fail(function (err) {
+        console.log('errore in post todo', err.status, err.statusText);
+    })
+    input.val('');
 }
