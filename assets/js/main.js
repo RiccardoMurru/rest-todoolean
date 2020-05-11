@@ -6,7 +6,6 @@
  */
 
 $(document).ready(function () {
-
     // refs
     var inputBar = $('.todo-input');
     var addBtn = $('.add-btn');
@@ -18,9 +17,9 @@ $(document).ready(function () {
     var template = Handlebars.compile(source);
 
 
-    /**
-     * Main
-    */
+    /********************
+     * Main functionality
+    *********************/
 
     // lettura e stampa todo da api
     getTodo(apiUrl, template, todoList);
@@ -37,12 +36,16 @@ $(document).ready(function () {
         }
     });
 
+    // cancella todo a click su icona
+    $('body').on('click', '.remove-icon', function () {
+        deleteTodo($(this), apiUrl, template, todoList);
+    });
 
 }); // end doc ready
 
-/**
+/************
  * Functions
-*/
+*************/
 
 // lettura e stampa todo da api
 function getTodo(apiUrl, template, container) {
@@ -77,10 +80,23 @@ function postTodo(input, apiUrl, template, container) {
         data: {
             text: todoText
         }
-    }).done(function (response) {
+    }).done(function () {
         getTodo(apiUrl, template, container);
     }).fail(function (err) {
         console.log('errore in post todo', err.status, err.statusText);
     })
     input.val('');
+}
+
+// cancella todo
+function deleteTodo(self, apiUrl, template, container) {
+    var todoId = self.parent().data('id');
+    $.ajax({
+        url: apiUrl + '/' + todoId,
+        method: 'DELETE'
+    }).done(function () {
+        getTodo(apiUrl, template, container);
+    }).fail(function (err) {
+        console.log('errore in cancellazione todo', err.status, err.statusText);
+    })
 }
