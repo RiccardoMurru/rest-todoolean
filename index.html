@@ -10,6 +10,26 @@
 
 <body>
 
+    <header>
+        <h1>ToDo list</h1>
+    </header>
+
+    <main>
+        <input class="todo-input" type="text">
+        <button class="add-btn">Aggiungi</button>
+
+        <div class="todo">
+            <ul class="todo-list">
+                <li class="todo-item" data-id="1"> fare la spesa</li>
+            </ul>
+        </div>
+    </main>
+
+    <script id="todo-template" type="text/x-handlebars-template">
+        <ul class="todo-list">
+            <li class="todo-item" data-id="{{id}}">{{text}}</li>
+        </ul>
+    </script>
 
     <!-- Handlebars -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
