@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: #ccc;
+}
+
+/* App styles */
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 100vh;
+    margin: 0 auto;
+    background: rgb(31, 31, 31);
+}
+
+/* Header */
+header {
+    margin: 20px 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #eee;
+}
+
+.add-items {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    justify-content: space-between;
+}
+
+.todo-input {
+    flex-grow: 1;
+    border: none;
+    background: #fff;
+    border: 1px solid #eee;
+    border-right: none;
+    padding: 0 10px;
+}
+
+.add-btn {
+    flex-basis: 30%;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-left: none;
+    cursor: pointer;
+}
+
+/* Main app styles */
+.todo {
+    width: 500px;
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 5px;
+    border-bottom: 1px solid #ddd;
+    color: #eee;
+}
+
+.remove-icon {
+    cursor: pointer;
+    color: rgb(194, 25, 19);
+}

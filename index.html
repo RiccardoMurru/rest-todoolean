@@ -10,21 +10,23 @@
 </head>
 
 <body>
+    <div class="app">
+        <header>
+            <h1>ToDo list</h1>
+            <div class="add-items">
+                <input class="todo-input" type="text" placeholder="Cosa devi fare oggi?">
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </header>
 
-    <header>
-        <h1>ToDo list</h1>
-    </header>
+        <main>
+            <div class="todo">
+                <ul class="todo-list">
 
-    <main>
-        <input class="todo-input" type="text">
-        <button class="add-btn">Aggiungi</button>
-
-        <div class="todo">
-            <ul class="todo-list">
-
-            </ul>
-        </div>
-    </main>
+                </ul>
+            </div>
+        </main>
+    </div>
 
     <script id="todo-template" type="text/x-handlebars-template">
         <li class="todo-item" data-id="{{id}}">
